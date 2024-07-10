@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-'''A simple Flask web application.
-'''
+"""This script starts a Flask web application."""
+
 from flask import Flask
 
-
 app = Flask(__name__)
-'''The Flask application instance.'''
-app.url_map.strict_slashes = False
+"""An instance of Flask."""
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index():
-    '''The home page.'''
-    return 'Hello HBNB!'
+    """This function returns Hello HBNB! in the index/home page."""
+
+    return "Hello HBNB!"
 
 
 if __name__ == '__main__':

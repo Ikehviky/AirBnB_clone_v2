@@ -1,37 +1,51 @@
 #!/usr/bin/python3
-'''A simple Flask web application.
-'''
+"""This script starts a Flask web application."""
+
 from flask import Flask
 
-
 app = Flask(__name__)
-'''The Flask application instance.'''
+"""Craetes an instance of flask."""
+
 app.url_map.strict_slashes = False
 
 
 @app.route('/')
 def index():
-    '''The home page.'''
-    return 'Hello HBNB!'
+    """Returns Hello HBNB! on the home page"""
+
+    return "Hello HBNB!"
 
 
 @app.route('/hbnb')
 def hbnb():
-    '''The hbnb page.'''
-    return 'HBNB'
+    """Displays HBNB on the hbnb page"""
+
+    return "HBNB"
 
 
 @app.route('/c/<text>')
-def c_page(text):
-    '''The c page.'''
-    return 'C {}'.format(text.replace('_', ' '))
+def c(text):
+    """
+    The c page, displays "C" followed by the value
+    of the text variable(replace underscore _ symbol
+    with space )
+    """
+    new_text = text.replace('_', ' ')
+
+    return "C {}".format(new_text)
 
 
+@app.route('/python')
 @app.route('/python/<text>')
-@app.route('/python', defaults={'text': 'is cool'})
-def python_page(text):
-    '''The python page.'''
-    return 'Python {}'.format(text.replace('_', ' '))
+def python(text='is cool'):
+    """
+    The python page, displays Python followed by the
+    value of the text variable (replace underscore _ symbols
+    with a space )
+    """
+    new_text = text.replace('_', ' ')
+
+    return "Python {}".format(new_text)
 
 
 if __name__ == '__main__':
